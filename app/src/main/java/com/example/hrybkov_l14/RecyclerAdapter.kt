@@ -7,7 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerAdapter(private val items: List<Pair<Person, Int>>) : RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>() {
+class RecyclerAdapter(private val items: List<Pair<Person, Int>>) : RecyclerView.Adapter<RecyclerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -23,13 +23,14 @@ class RecyclerAdapter(private val items: List<Pair<Person, Int>>) : RecyclerView
         return items.size
     }
 
-    class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(pair: Pair<Person, Int>) {
-            itemView.run {
-                findViewById<LinearLayout>(R.id.recyclerViewLayout).setPadding(pair.second*20, 0, 0, 0)
-                findViewById<TextView>(R.id.tvName).text = pair.first.name
-                findViewById<TextView>(R.id.tvAge).text = pair.first.age.toString()
-            }
+}
+
+class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    fun bind(pair: Pair<Person, Int>) {
+        itemView.run {
+            findViewById<LinearLayout>(R.id.recyclerViewLayout).setPadding(pair.second*20, 0, 0, 0)
+            findViewById<TextView>(R.id.tvName).text = pair.first.name
+            findViewById<TextView>(R.id.tvAge).text = pair.first.age.toString()
         }
     }
 }
